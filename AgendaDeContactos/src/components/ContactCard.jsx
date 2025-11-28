@@ -12,10 +12,10 @@ const escapeHtml = (text) => {
 const ContactCard = ({ contact, onEdit, onDelete }) => {
   const getEtiquetaIcon = (etiqueta) => {
     const icons = {
-      familia: '👨‍👩‍👧',
-      trabajo: '💼',
-      amigos: '👥',
-      otro: '📌'
+      familia,
+      trabajo,
+      amigos,
+      otro
     }
     return icons[etiqueta] || ''
   }
@@ -35,8 +35,8 @@ const ContactCard = ({ contact, onEdit, onDelete }) => {
   return (
     <div className="contact-card">
       <div className="card-header">
-        <h3 
-          className="contact-name" 
+        <h3
+          className="contact-name"
           dangerouslySetInnerHTML={{ __html: escapeHtml(contact.nombre) }}
         />
         {contact.etiqueta && (
@@ -49,18 +49,16 @@ const ContactCard = ({ contact, onEdit, onDelete }) => {
       <div className="card-body">
         <div className="contact-info">
           <div className="info-item">
-            <span className="info-icon">📧</span>
-            <a 
-              href={`mailto:${contact.correo}`} 
+            <a
+              href={`mailto:${contact.correo}`}
               className="info-value"
               dangerouslySetInnerHTML={{ __html: escapeHtml(contact.correo) }}
             />
           </div>
 
           <div className="info-item">
-            <span className="info-icon">📱</span>
-            <a 
-              href={`tel:${contact.telefono}`} 
+            <a
+              href={`tel:${contact.telefono}`}
               className="info-value"
               dangerouslySetInnerHTML={{ __html: escapeHtml(contact.telefono) }}
             />
@@ -68,8 +66,7 @@ const ContactCard = ({ contact, onEdit, onDelete }) => {
 
           {contact.notas && (
             <div className="info-item notes">
-              <span className="info-icon">📝</span>
-              <p 
+              <p
                 className="info-value"
                 dangerouslySetInnerHTML={{ __html: escapeHtml(contact.notas) }}
               />
@@ -84,14 +81,14 @@ const ContactCard = ({ contact, onEdit, onDelete }) => {
           onClick={handleEdit}
           title="Editar contacto"
         >
-          ✏️ Editar
+          Editar
         </button>
         <button
           className="btn btn-delete"
           onClick={handleDelete}
           title="Eliminar contacto"
         >
-          🗑️ Eliminar
+          Eliminar
         </button>
       </div>
     </div>

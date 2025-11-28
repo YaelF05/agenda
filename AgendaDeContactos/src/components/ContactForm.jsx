@@ -64,7 +64,7 @@ const ContactForm = ({ contact, onSubmit, onCancel, isEditing = false }) => {
     const cleanPhone = value.replace(/[\s-]/g, '')
     // Contar solo dígitos
     const digitCount = (cleanPhone.match(/\d/g) || []).length
-    
+
     if (digitCount < 7 || digitCount > 15) {
       return 'El teléfono debe tener entre 7 y 15 dígitos'
     }
@@ -94,7 +94,7 @@ const ContactForm = ({ contact, onSubmit, onCancel, isEditing = false }) => {
 
   const validateForm = () => {
     const newErrors = {}
-    
+
     const nombreError = validateNombre(formData.nombre)
     if (nombreError) newErrors.nombre = nombreError
 
@@ -120,7 +120,7 @@ const ContactForm = ({ contact, onSubmit, onCancel, isEditing = false }) => {
       ...prev,
       [name]: value
     }))
-    
+
     // Limpiar error del campo al escribir
     if (errors[name]) {
       setErrors(prev => ({
@@ -132,7 +132,7 @@ const ContactForm = ({ contact, onSubmit, onCancel, isEditing = false }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    
+
     if (!validateForm()) {
       return
     }
@@ -160,8 +160,8 @@ const ContactForm = ({ contact, onSubmit, onCancel, isEditing = false }) => {
 
   return (
     <div className="contact-form-container">
-      <h2>{isEditing ? '✏️ Editar Contacto' : '➕ Nuevo Contacto'}</h2>
-      
+      <h2>{isEditing ? 'Editar Contacto' : 'Nuevo Contacto'}</h2>
+
       <form onSubmit={handleSubmit} className="contact-form" noValidate>
         <div className="form-group">
           <label htmlFor="nombre">
@@ -230,10 +230,10 @@ const ContactForm = ({ contact, onSubmit, onCancel, isEditing = false }) => {
             disabled={submitting}
           >
             <option value="">Sin etiqueta</option>
-            <option value="familia">👨‍👩‍👧 Familia</option>
-            <option value="trabajo">💼 Trabajo</option>
-            <option value="amigos">👥 Amigos</option>
-            <option value="otro">📌 Otro</option>
+            <option value="familia">Familia</option>
+            <option value="trabajo">Trabajo</option>
+            <option value="amigos">Amigos</option>
+            <option value="otro">Otro</option>
           </select>
           {errors.etiqueta && <span className="error-message">{errors.etiqueta}</span>}
         </div>
@@ -263,7 +263,7 @@ const ContactForm = ({ contact, onSubmit, onCancel, isEditing = false }) => {
             className="btn btn-primary"
             disabled={submitting}
           >
-            {submitting ? 'Guardando...' : (isEditing ? '💾 Actualizar' : '➕ Crear')}
+            {submitting ? 'Guardando...' : (isEditing ? 'Actualizar' : 'Crear')}
           </button>
           <button
             type="button"
@@ -271,7 +271,7 @@ const ContactForm = ({ contact, onSubmit, onCancel, isEditing = false }) => {
             onClick={onCancel}
             disabled={submitting}
           >
-            ❌ Cancelar
+            Cancelar
           </button>
         </div>
       </form>

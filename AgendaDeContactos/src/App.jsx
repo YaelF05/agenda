@@ -148,8 +148,7 @@ function App() {
   return (
     <div className="App">
       <header className="app-header">
-        <h1>📇 Agenda de Contactos</h1>
-        <p className="subtitle">CRUD con Validación Segura</p>
+        <h1>Agenda de Contactos</h1>
       </header>
 
       <main className="app-main">
@@ -179,14 +178,14 @@ function App() {
             onClick={() => setShowForm(true)}
             disabled={showForm || editingContact}
           >
-            ➕ Nuevo Contacto
+            Nuevo Contacto
           </button>
           <button
             className="btn btn-secondary"
             onClick={fetchContacts}
             disabled={loading}
           >
-            🔄 Actualizar Lista
+            Actualizar Lista
           </button>
         </div>
 

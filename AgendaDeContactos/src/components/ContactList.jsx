@@ -7,7 +7,6 @@ const ContactList = ({ contacts, onEdit, onDelete }) => {
     return (
       <div className="contact-list-empty">
         <div className="empty-state">
-          <span className="empty-icon">📭</span>
           <h3>No hay contactos</h3>
           <p>Comienza agregando tu primer contacto</p>
         </div>
