@@ -1,0 +1,160 @@
+.contact-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
+}
+
+.contact-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.contact-name {
+  color: var(--dark-text);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+  word-break: break-word;
+  flex: 1;
+}
+
+.tag {
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.tag-familia {
+  background-color: #e3f2fd;
+  color: #1976d2;
+}
+
+.tag-trabajo {
+  background-color: #fff3e0;
+  color: #f57c00;
+}
+
+.tag-amigos {
+  background-color: #f3e5f5;
+  color: #7b1fa2;
+}
+
+.tag-otro {
+  background-color: #e8f5e9;
+  color: #388e3c;
+}
+
+.tag-default {
+  background-color: var(--light-bg);
+  color: var(--secondary-color);
+}
+
+.card-body {
+  flex: 1;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.info-item.notes {
+  margin-top: 0.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.info-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  width: 24px;
+  text-align: center;
+}
+
+.info-value {
+  color: var(--dark-text);
+  font-size: 0.95rem;
+  word-break: break-word;
+  flex: 1;
+  line-height: 1.5;
+}
+
+.info-value a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.info-value a:hover {
+  color: var(--primary-dark);
+  text-decoration: underline;
+}
+
+.info-item.notes .info-value {
+  color: var(--secondary-color);
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.card-footer {
+  display: flex;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--border-color);
+}
+
+.card-footer .btn {
+  flex: 1;
+  justify-content: center;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .contact-card {
+    padding: 1rem;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-name {
+    font-size: 1.2rem;
+  }
+
+  .card-footer {
+    flex-direction: column;
+  }
+
+  .card-footer .btn {
+    width: 100%;
+  }
+}

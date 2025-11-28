@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda de Contactos - Características</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #4a90e2;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 2.5rem;
+        }
+        .subtitle {
+            text-align: center;
+            color: #6c757d;
+            margin-bottom: 2rem;
+            font-size: 1.2rem;
+        }
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .feature {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #4a90e2;
+        }
+        .feature h3 {
+            color: #4a90e2;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .feature ul {
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .feature li {
+            margin-bottom: 0.5rem;
+        }
+        .validation-rules {
+            background: #e3f2fd;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        .validation-rules h2 {
+            color: #1976d2;
+            margin-bottom: 1rem;
+        }
+        .validation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .validation-table th,
+        .validation-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .validation-table th {
+            background-color: #4a90e2;
+            color: white;
+        }
+        .security {
+            background: #d1e7dd;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        .security h2 {
+            color: #0f5132;
+            margin-bottom: 1rem;
+        }
+        .tech-stack {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .tech-column {
+            background: #fff3e0;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        .tech-column h3 {
+            color: #f57c00;
+            margin-bottom: 1rem;
+        }
+        .tech-column ul {
+            list-style: none;
+        }
+        .tech-column li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ffe0b2;
+        }
+        .tech-column li:before {
+            content: "⚡ ";
+        }
+        code {
+            background: #f4f4f4;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        .note strong {
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📇 Agenda de Contactos</h1>
+        <p class="subtitle">CRUD con Validación Segura - React + FastAPI</p>
+
+        <div class="note">
+            <strong>⚠️ IMPORTANTE:</strong> Antes de ejecutar la aplicación, debes configurar CORS en el backend. 
+            Consulta el archivo <code>CORS_SETUP.md</code> para instrucciones detalladas.
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <h3>✅ Funcionalidades CRUD</h3>
+                <ul>
+                    <li>Crear contactos con validación completa</li>
+                    <li>Listar todos los contactos en tarjetas</li>
+                    <li>Editar contactos existentes</li>
+                    <li>Eliminar con confirmación previa</li>
+                    <li>Actualización en tiempo real</li>
+                </ul>
+            </div>
+
+            <div class="feature">
+                <h3>🔒 Seguridad Implementada</h3>
+                <ul>
+                    <li>Validación en cliente y servidor</li>
+                    <li>Escape de HTML para prevenir XSS</li>
+                    <li>Consultas parametrizadas (ORM)</li>
+                    <li>Sanitización de entradas</li>
+                    <li>Manejo seguro de errores</li>
+                </ul>
+            </div>
+
+            <div class="feature">
+                <h3>🎨 Interfaz de Usuario</h3>
+                <ul>
+                    <li>Diseño moderno y responsive</li>
+                    <li>Modal para formularios</li>
+                    <li>Tarjetas con etiquetas de color</li>
+                    <li>Alertas de feedback visual</li>
+                    <li>Animaciones suaves</li>
+                </ul>
+            </div>
+
+            <div class="feature">
+                <h3>⚡ Características Técnicas</h3>
+                <ul>
+                    <li>React 19 con Hooks</li>
+                    <li>FastAPI con validación Pydantic</li>
+                    <li>SQLite con SQLAlchemy</li>
+                    <li>Tests unitarios incluidos</li>
+                    <li>Sin dependencias CSS externas</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="validation-rules">
+            <h2>📋 Reglas de Validación</h2>
+            <table class="validation-table">
+                <thead>
+                    <tr>
+                        <th>Campo</th>
+                        <th>Tipo</th>
+                        <th>Validación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Nombre</strong></td>
+                        <td>Obligatorio</td>
+                        <td>Letras, espacios y acentos; 1-80 caracteres</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Correo</strong></td>
+                        <td>Obligatorio</td>
+                        <td>Formato email estándar; máx. 120 caracteres</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Teléfono</strong></td>
+                        <td>Obligatorio</td>
+                        <td>7-15 dígitos; "+" opcional al inicio</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Etiqueta</strong></td>
+                        <td>Opcional</td>
+                        <td>familia, trabajo, amigos, otro o vacío</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Notas</strong></td>
+                        <td>Opcional</td>
+                        <td>Texto plano; máx. 500 caracteres; sin HTML</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="security">
+            <h2>🛡️ Medidas de Seguridad</h2>
+            <ul>
+                <li><strong>Validación Doble:</strong> Tanto en frontend como en backend para máxima seguridad</li>
+                <li><strong>Prevención de XSS:</strong> Escape de caracteres especiales con <code>escapeHtml()</code></li>
+                <li><strong>Prevención de Injection:</strong> Uso de ORM SQLAlchemy con consultas parametrizadas</li>
+                <li><strong>Lista Blanca:</strong> Solo se aceptan valores predefinidos para etiquetas</li>
+                <li><strong>Regex Ancladas:</strong> Validación estricta de formatos con <code>^</code> y <code>$</code></li>
+                <li><strong>Sanitización:</strong> <code>html.escape()</code> en todas las entradas de texto</li>
+                <li><strong>Manejo de Errores:</strong> Mensajes genéricos al usuario, detalles solo en logs</li>
+            </ul>
+        </div>
+
+        <div class="tech-stack">
+            <div class="tech-column">
+                <h3>🔧 Backend (FastAPI)</h3>
+                <ul>
+                    <li>FastAPI - Framework web moderno</li>
+                    <li>SQLAlchemy - ORM para base de datos</li>
+                    <li>Pydantic - Validación de datos</li>
+                    <li>SQLite - Base de datos</li>
+                    <li>Uvicorn - Servidor ASGI</li>
+                    <li>pytest - Testing</li>
+                </ul>
+            </div>
+
+            <div class="tech-column">
+                <h3>🎨 Frontend (React)</h3>
+                <ul>
+                    <li>React 19 - Biblioteca UI</li>
+                    <li>Vite - Build tool rápido</li>
+                    <li>CSS3 - Estilos puros (sin frameworks)</li>
+                    <li>Fetch API - Peticiones HTTP</li>
+                    <li>PropTypes - Validación de props</li>
+                    <li>ESLint - Linter de código</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="margin-top: 2rem; padding: 1.5rem; background: #f8f9fa; border-radius: 8px;">
+            <h2 style="color: #4a90e2; margin-bottom: 1rem;">🚀 Comenzar</h2>
+            <ol style="margin-left: 1.5rem;">
+                <li style="margin-bottom: 0.5rem;">Lee el archivo <code>INICIO_RAPIDO.md</code> para instrucciones paso a paso</li>
+                <li style="margin-bottom: 0.5rem;">Configura CORS en el backend (ver <code>CORS_SETUP.md</code>)</li>
+                <li style="margin-bottom: 0.5rem;">Inicia el backend en el puerto 8000</li>
+                <li style="margin-bottom: 0.5rem;">Inicia el frontend en el puerto 5173</li>
+                <li style="margin-bottom: 0.5rem;">Abre tu navegador en <code>http://localhost:5173</code></li>
+            </ol>
+        </div>
+
+        <div style="margin-top: 2rem; text-align: center; color: #6c757d;">
+            <p>📚 Para más información, consulta el archivo <code>README.md</code></p>
+        </div>
+    </div>
+</body>
+</html>
