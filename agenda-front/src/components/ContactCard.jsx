@@ -1,21 +1,15 @@
 import PropTypes from 'prop-types'
 import './ContactCard.css'
 
-// Función para escapar HTML y prevenir XSS
-const escapeHtml = (text) => {
-  if (!text) return ''
-  const div = document.createElement('div')
-  div.textContent = text
-  return div.innerHTML
-}
+
 
 const ContactCard = ({ contact, onEdit, onDelete }) => {
   const getEtiquetaIcon = (etiqueta) => {
     const icons = {
-      familia,
-      trabajo,
-      amigos,
-      otro
+      familia: '👨‍👩‍👧‍👦',
+      trabajo: '💼',
+      amigos: '🎉',
+      otro: '🔖'
     }
     return icons[etiqueta] || ''
   }
@@ -35,10 +29,7 @@ const ContactCard = ({ contact, onEdit, onDelete }) => {
   return (
     <div className="contact-card">
       <div className="card-header">
-        <h3
-          className="contact-name"
-          dangerouslySetInnerHTML={{ __html: escapeHtml(contact.nombre) }}
-        />
+        <h3 className="contact-name">{contact.nombre}</h3>
         {contact.etiqueta && (
           <span className={getEtiquetaClass(contact.etiqueta)}>
             {getEtiquetaIcon(contact.etiqueta)} {contact.etiqueta}
@@ -49,27 +40,20 @@ const ContactCard = ({ contact, onEdit, onDelete }) => {
       <div className="card-body">
         <div className="contact-info">
           <div className="info-item">
-            <a
-              href={`mailto:${contact.correo}`}
-              className="info-value"
-              dangerouslySetInnerHTML={{ __html: escapeHtml(contact.correo) }}
-            />
+            <a href={`mailto:${contact.correo}`} className="info-value">
+              {contact.correo}
+            </a>
           </div>
 
           <div className="info-item">
-            <a
-              href={`tel:${contact.telefono}`}
-              className="info-value"
-              dangerouslySetInnerHTML={{ __html: escapeHtml(contact.telefono) }}
-            />
+            <a href={`tel:${contact.telefono}`} className="info-value">
+              {contact.telefono}
+            </a>
           </div>
 
           {contact.notas && (
             <div className="info-item notes">
-              <p
-                className="info-value"
-                dangerouslySetInnerHTML={{ __html: escapeHtml(contact.notas) }}
-              />
+              <p className="info-value">{contact.notas}</p>
             </div>
           )}
         </div>

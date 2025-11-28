@@ -1,154 +1,158 @@
-import { useState, useEffect } from 'react'
-import './App.css'
-import ContactForm from './components/ContactForm'
-import ContactList from './components/ContactList'
-import Modal from './components/Modal'
+import { useState, useEffect } from "react";
+import "./App.css";
+import ContactForm from "./components/ContactForm";
+import ContactList from "./components/ContactList";
+import Modal from "./components/Modal";
 
-const API_URL = 'http://127.0.0.1:8000/api/v1/contacts'
+const API_URL = "http://127.0.0.1:8000/api/v1/contacts";
 
 function App() {
-  const [contacts, setContacts] = useState([])
-  const [editingContact, setEditingContact] = useState(null)
-  const [showForm, setShowForm] = useState(false)
-  const [error, setError] = useState('')
-  const [success, setSuccess] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [contacts, setContacts] = useState([]);
+  const [editingContact, setEditingContact] = useState(null);
+  const [showForm, setShowForm] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState(false);
 
   // Cargar contactos al inicio
   useEffect(() => {
-    fetchContacts()
-  }, [])
+    fetchContacts();
+  }, []);
 
   // Limpiar mensajes después de 5 segundos
   useEffect(() => {
     if (error || success) {
       const timer = setTimeout(() => {
-        setError('')
-        setSuccess('')
-      }, 5000)
-      return () => clearTimeout(timer)
+        setError("");
+        setSuccess("");
+      }, 5000);
+      return () => clearTimeout(timer);
     }
-  }, [error, success])
+  }, [error, success]);
 
   const fetchContacts = async () => {
-    setLoading(true)
+    setLoading(true);
     try {
-      const response = await fetch(API_URL)
+      const response = await fetch(API_URL);
       if (!response.ok) {
-        throw new Error('Error al cargar los contactos')
+        throw new Error("Error al cargar los contactos");
       }
-      const data = await response.json()
-      setContacts(data)
-      setError('')
+      const data = await response.json();
+      setContacts(data);
+      setError("");
     } catch (err) {
-      setError('No se pudieron cargar los contactos. Verifica que el servidor esté activo.')
-      console.error('Error fetching contacts:', err)
+      setError(
+        "No se pudieron cargar los contactos. Verifica que el servidor esté activo."
+      );
+      console.error("Error al obtener contactos:", err);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleCreate = async (contactData) => {
-    setLoading(true)
+    setLoading(true);
     try {
       const response = await fetch(API_URL, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(contactData),
-      })
+      });
 
       if (!response.ok) {
-        const errorData = await response.json()
-        throw new Error(errorData.detail || 'Error al crear el contacto')
+        const errorData = await response.json();
+        throw new Error(errorData.detail || "Error al crear el contacto");
       }
 
-      await fetchContacts()
-      setShowForm(false)
-      setSuccess('Contacto creado exitosamente')
-      setError('')
+      await fetchContacts();
+      setShowForm(false);
+      setSuccess("Contacto creado exitosamente");
+      setError("");
     } catch (err) {
-      setError(err.message || 'Error al crear el contacto')
-      console.error('Error creating contact:', err)
-      throw err
+      setError(err.message || "Error al crear el contacto");
+      console.error("Error al crear el contacto:", err);
+      throw err;
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleUpdate = async (id, contactData) => {
-    setLoading(true)
+    setLoading(true);
     try {
       const response = await fetch(`${API_URL}/${id}`, {
-        method: 'PUT',
+        method: "PUT",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(contactData),
-      })
+      });
 
       if (!response.ok) {
-        const errorData = await response.json()
-        throw new Error(errorData.detail || 'Error al actualizar el contacto')
+        const errorData = await response.json();
+        throw new Error(errorData.detail || "Error al actualizar el contacto");
       }
 
-      await fetchContacts()
-      setEditingContact(null)
-      setSuccess('Contacto actualizado exitosamente')
-      setError('')
+      await fetchContacts();
+      setEditingContact(null);
+      setSuccess("Contacto actualizado exitosamente");
+      setError("");
     } catch (err) {
-      setError(err.message || 'Error al actualizar el contacto')
-      console.error('Error updating contact:', err)
-      throw err
+      setError(err.message || "Error al actualizar el contacto");
+      console.error("Error al actualizar el contacto:", err);
+      throw err;
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleDelete = async (id) => {
-    if (!window.confirm('¿Estás seguro de que deseas eliminar este contacto?')) {
-      return
+    if (
+      !window.confirm("¿Estás seguro de que deseas eliminar este contacto?")
+    ) {
+      return;
     }
 
-    setLoading(true)
+    setLoading(true);
     try {
       const response = await fetch(`${API_URL}/${id}`, {
-        method: 'DELETE',
-      })
+        method: "DELETE",
+      });
 
       if (!response.ok) {
-        throw new Error('Error al eliminar el contacto')
+        throw new Error("Error al eliminar el contacto");
       }
 
-      await fetchContacts()
-      setSuccess('Contacto eliminado exitosamente')
-      setError('')
+      await fetchContacts();
+      setSuccess("Contacto eliminado exitosamente");
+      setError("");
     } catch (err) {
-      setError(err.message || 'Error al eliminar el contacto')
-      console.error('Error deleting contact:', err)
+      setError(err.message || "Error al eliminar el contacto");
+      console.error("Error al eliminar el contacto:", err);
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleEdit = (contact) => {
-    setEditingContact(contact)
-    setShowForm(false)
-  }
+    setEditingContact(contact);
+    setShowForm(false);
+  };
 
   const handleCancelEdit = () => {
-    setEditingContact(null)
-  }
+    setEditingContact(null);
+  };
 
   const handleCancelCreate = () => {
-    setShowForm(false)
-  }
+    setShowForm(false);
+  };
 
   return (
     <div className="App">
       <header className="app-header">
-        <h1>Agenda de Contactos</h1>
+        <h1>Agenda de Contactos — CRUD con Validación Segura</h1>
       </header>
 
       <main className="app-main">
@@ -220,7 +224,7 @@ function App() {
         <p>Total de contactos: {contacts.length}</p>
       </footer>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

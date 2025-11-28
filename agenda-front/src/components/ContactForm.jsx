@@ -152,7 +152,7 @@ const ContactForm = ({ contact, onSubmit, onCancel, isEditing = false }) => {
       }
     } catch (err) {
       // El error se maneja en el componente padre
-      console.error('Error submitting form:', err)
+      console.error('Error al enviar el formulario:', err)
     } finally {
       setSubmitting(false)
     }
